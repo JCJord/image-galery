@@ -28,8 +28,22 @@ export class GaleryService {
     }))
   }
 
-  searchImages(query: string, page: number): Observable<any> { 
-    return this.http.get<ImageGalery[]>('https://api.unsplash.com/search/photos?query='+`${query}`+'&client_id=05XvQWHnSKPXOYEBR7kLnpSN9mGYo2Iskc5vj-zlsfs&per_page=10&page='+`${page}`);
+  searchImages(query: string, page: number): Observable<Image[]> { 
+    return this.http.get<{results: ImageGalery[]}>('https://api.unsplash.com/search/photos?query='+`${query}`+'&client_id=05XvQWHnSKPXOYEBR7kLnpSN9mGYo2Iskc5vj-zlsfs&per_page=10&page='+`${page}`)
+    .pipe(map((data: {results: ImageGalery[]}) => {
+      return data.results.map((item: ImageGalery) => {
+        return {
+          id: item.id,
+          alt_description: item.alt_description,
+          description: item.description,
+          is_loaded: false,
+          links: item.links,
+          urls: item.urls,
+          profile_image: item.profile_image,
+          user: item.user
+        }
+      })
+    }))
   }
 }
 

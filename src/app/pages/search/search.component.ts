@@ -27,14 +27,14 @@ export class SearchComponent implements OnInit, OnDestroy {
   searchImages(query: string) {
     this.$searchSubscription = this.galeryService.searchImages(query, this.actualPage)
     .subscribe((data)=> {
-      this.searchedImages = data.results;
+      this.searchedImages = data;
     });
   }
 
   scrollCheck() {
     this.actualPage++;
-    this.galeryService.searchImages(this.searchQuery , 2).subscribe((data) => {
-      data.results.map((items: Image)=>{
+    this.galeryService.searchImages(this.searchQuery , this.actualPage).subscribe((data) => {
+      data.map((items: Image)=>{
         this.searchedImages.push(items)
       })
     })
