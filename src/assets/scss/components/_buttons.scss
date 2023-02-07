@@ -1,0 +1,27 @@
+@import "./../base/variables";
+
+@mixin buttonLayout($bgColor, $borderColor, $textColor) {
+    padding: 5px 15px;
+    border-radius: 18px;
+    border: 1px solid;
+    border-color: $borderColor;
+    text-decoration: none;
+    background-color: $bgColor;
+    color: $textColor;
+    transition: .2s ease-in-out;
+}
+
+.btn-primary {
+    @include buttonLayout($light, $grey, $dark);
+
+    &:hover {
+        background-color: $lightGrey;
+    }
+}
+
+.btn-secondary {
+    @include buttonLayout($dark, unset, $light);
+    &:hover {
+        background-color: $middleGrey;
+    }
+}

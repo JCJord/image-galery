@@ -1,0 +1,21 @@
+<div class="search-container" appScrollToBottom (isAtBottom)="scrollCheck()">
+    <h2> {{ searchQuery }} </h2>
+    <div class="galery-container">
+        <div class="item" *ngFor="let img of searchedImages; let i = index">
+            <div [hidden]="img.is_loaded" class="img-skeleton">
+            </div>
+            
+            <img [hidden]="!img.is_loaded" class="galery-item" [src]="img.urls.regular" (load)="onLoad(i)" alt="">
+            
+            <div class="image-info-box">
+                <div class="user">
+                    <img [src]="img.user.profile_image.small" alt="">
+                    <span> {{ img.user.username }} </span>
+                </div>
+                <a class="download-button" [href]="img.links.download + '&force=true'" class="download-button">
+                    <img src="../../../assets/icons/download.svg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

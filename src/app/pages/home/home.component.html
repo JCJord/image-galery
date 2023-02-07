@@ -1,3 +1,37 @@
-<h1>
-    This is the home Page
-</h1>
+<div class="container" appScrollToBottom (isAtBottom)="scrollCheck()">
+    <section class="banner-section" [ngStyle]="{'backgroundImage': 'url(../../../assets/images/background.jpg)'}">
+        <div class="banner-content">
+            <div class="banner-title">
+                <h1>
+                    Use o nosso banco de imagens Royalty Free
+                </h1>
+                <div class="sub-title">
+                    Fonte de imagens da internet.
+                </div>
+            </div>
+            <form [formGroup]="searchForm" class="w-100" style="position: relative;">
+                <app-search-input tabindex="1" [name]="'search'" [label]="'search'" (isAtBottom)="inputSearch()"></app-search-input>
+            </form>
+        </div>
+    </section>
+
+    <div class="galery-container">
+        <div class="item" *ngFor="let img of imageGalery; let i = index">
+            <div [hidden]="img.is_loaded" class="img-skeleton">
+            </div>
+            
+            <img [hidden]="!img.is_loaded" class="galery-item" [src]="img.urls.regular" (load)="onLoad(i)" alt="">
+            
+            <div class="image-info-box">
+                <div class="user">
+                    <img [src]="img.user.profile_image.small" alt="">
+                    <span> {{ img.user.username }} </span>
+                </div>
+                <a class="download-button" [href]="img.links.download + '&force=true'" class="download-button" style="color: white">
+                    <img src="../../../assets/icons/download.svg" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="img-skeleton" *ngIf="imageGalery"></div>
+    </div>
+</div>

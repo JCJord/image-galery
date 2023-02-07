@@ -1,0 +1,17 @@
+<div>
+    <div class="d-flex">
+        <div class="search-icon">
+            <img src="../../../../assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg" alt="">
+        </div>
+        <input type="text"
+        [formControlName]="name"
+        class="search-input"
+        placeholder="Pesquisar Imagens"
+        tabindex="1"
+        (keyup.enter)="onEnterKeyPress()"
+        />
+        <div class="search-menu w-100" tabindex="1">
+            
+        </div>
+    </div>
+</div>
