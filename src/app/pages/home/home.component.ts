@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     const pageNumber = 1;
     this.$imageSubscription = this.galeryService.getImages(pageNumber).subscribe((images: Image[]) => {
       this.imageGalery = images;
-      console.log(this.imageGalery)
     });
   }
 
@@ -64,8 +63,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.$imageSubscription.unsubscribe();
-    //this.$scrollSubscription.unsubscribe();
-    // this.$searchSubcription.unsubscribe();
+    if(this.$scrollSubscription){
+      this.$scrollSubscription.unsubscribe();
+    }
   }
 
 }
