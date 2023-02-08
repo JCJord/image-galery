@@ -5,13 +5,11 @@
 ### 1.1. Preparação
 Para evitar conflitos entre os ambientes dos desenvolvedores, o projeto já possui containers com as dependências e configurações necessárias, bastando apenas que o desenvolvedor possua os seguintes softwares instalados localmente:
 
-Node.js (versão 16.15.0 ou superior) e NPM (versão 8.5.5 ou superior)
-
 Docker
 
 Docker Compose
 
-Git Large File Storage
+NPM
 
 Tendo todas as dependências instaladas, será necessário executar o comando abaixo antes de subir a aplicação pela primeira vez:
 
