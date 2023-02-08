@@ -15,6 +15,7 @@ Tendo todas as dependências instaladas, será necessário executar o comando ab
 
 npm install
 
+## Execução sem o Docker
 Para executar o projeto localmente sem o Docker (necessário node 18.13.0 e Angular CLI 15.1.4)
 basta executar o seguinte comando: ng serve
 
