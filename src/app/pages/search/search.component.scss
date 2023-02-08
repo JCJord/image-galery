@@ -116,6 +116,10 @@
 }
 
 @media only screen and (max-width: 866px) {
+    .img-skeleton {
+        min-height: 300px;
+        margin-top: 170px;
+    }
 
     .image-info-box {
         display: none;
