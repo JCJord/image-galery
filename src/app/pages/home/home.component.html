@@ -1,5 +1,5 @@
 <div class="container" appScrollToBottom (isAtBottom)="scrollCheck()">
-    <section class="banner-section" [ngStyle]="{'backgroundImage': 'url(../../../assets/images/background.jpg)'}">
+    <section class="banner-section" [ngStyle]="{'backgroundImage': 'url(https://images.unsplash.com/photo-1622737133809-d95047b9e673?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80)'}">
         <div class="banner-content">
             <div class="banner-title">
                 <h1>
@@ -9,7 +9,7 @@
                     Fonte de imagens da internet.
                 </div>
             </div>
-            <form [formGroup]="searchForm" class="w-100" style="position: relative;">
+            <form [formGroup]="searchForm" class="w-100">
                 <app-search-input tabindex="1" [name]="'search'" [label]="'search'" (isAtBottom)="inputSearch()"></app-search-input>
             </form>
         </div>
@@ -27,7 +27,7 @@
                     <img [src]="img.user.profile_image.small" alt="">
                     <span> {{ img.user.username }} </span>
                 </div>
-                <a class="download-button" [href]="img.links.download + '&force=true'" class="download-button" style="color: white">
+                <a class="download-button" [href]="img.links.download + '&force=true'" class="download-button">
                     <img src="../../../assets/icons/download.svg" alt="">
                 </a>
             </div>

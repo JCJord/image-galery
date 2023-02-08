@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime, Subscription } from 'rxjs';
 import { ScrollToBottomDirective } from 'src/app/shared/directives/scroll-to-bottom.directive';
+import { CacheService } from 'src/app/shared/services/cache.service';
 import { GaleryService, Image } from 'src/app/shared/services/galery.service';
 
 @Component({
@@ -12,13 +13,13 @@ import { GaleryService, Image } from 'src/app/shared/services/galery.service';
   viewProviders:[ ScrollToBottomDirective ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  constructor(private galeryService: GaleryService, private router: Router) {}
+  constructor(private galeryService: GaleryService, private router: Router, private cacheService: CacheService) {}
 
   private $imageSubscription!: Subscription;
   private $scrollSubscription!: Subscription;
   
   imageGalery!: Image[];
-
+  
   isLoading = true;
   actualPage = 1;
 
@@ -42,7 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.$scrollSubscription = this.galeryService.getImages(this.actualPage).subscribe((data) => {
       data.map((items)=>{
-        this.imageGalery.push(items)
+        this.imageGalery.push(items);
       })
     })
   }
@@ -53,7 +54,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     if(inputQuery == undefined || inputQuery == "") {
       return
     } else {
-      this.router.navigate(['/photos/', inputQuery])
+      this.cacheService.setQueries(inputQuery);
+      this.router.navigate(['/photos/', inputQuery]);
     }
   }
   
@@ -63,8 +65,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.$imageSubscription.unsubscribe();
-    if(this.$scrollSubscription){
-      this.$scrollSubscription.unsubscribe();
+    if(this.$scrollSubscription) {
+      this.$scrollSubscription.unsubscribe()
     }
   }
 
