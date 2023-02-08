@@ -31,11 +31,6 @@
             </div>
             <img [hidden]="!img.is_loaded" class="galery-item" [src]="img.urls.regular" (load)="onLoad(i)" alt="">
 
-            <a class="below-info-mobile" [href]="img.links.download + '&force=true'">
-                <img src="../../../assets/icons/download.svg" alt="">
-                Download
-            </a>
-
             <div class="image-info-box">
                 <div class="user">
                     <img [src]="img.user.profile_image.small" alt="">
@@ -45,6 +40,11 @@
                     <img src="../../../assets/icons/download.svg" alt="">
                 </a>
             </div>
+            <a class="below-info-mobile" [href]="img.links.download + '&force=true'">
+                <img src="../../../assets/icons/download.svg" alt="">
+                Download
+            </a>
+
         </div>
         <div class="img-skeleton" *ngIf="imageGalery"></div>
     </div>
