@@ -1,27 +1,34 @@
 # ImageGalery
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+## 1. Ambiente de desenvolvimento
 
-## Development server
+## Execução sem o Docker
+Para executar o projeto localmente sem o Docker (necessário node 18.13.0 e Angular CLI 15.1.4)
+basta executar o seguinte comando: ng serve
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 1.1. Preparação
+Para evitar conflitos entre os ambientes dos desenvolvedores, o projeto já possui containers com as dependências e configurações necessárias, bastando apenas que o desenvolvedor possua os seguintes softwares instalados localmente:
 
-## Code scaffolding
+Docker
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Docker Compose
 
-## Build
+NPM
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Tendo todas as dependências instaladas, será necessário executar o comando abaixo antes de subir a aplicação pela primeira vez:
 
-## Running unit tests
+npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 1.2. Comandos disponíveis
+Abaixo estão listados os principais comandos para execução e finalização dos containers.
 
-## Running end-to-end tests
+### 1.2.1. Iniciar a aplicação
+Após finalizar a configuração do ambiente é possível iniciar a aplicação com o comando:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+docker-compose up
 
-## Further help
+### 1.2.2. Finalizar a aplicação
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+docker-compose down
+
+
