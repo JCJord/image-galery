@@ -1,6 +1,9 @@
 <div class="search-container" appScrollToBottom (isAtBottom)="scrollCheck()">
     <h2> {{ searchQuery }} </h2>
-    <div class="galery-container">
+    <div *ngIf="!hasImages">
+        <h2>Sua busca não foi encontrada.</h2>
+    </div>
+    <div *ngIf="searchedImages.length > 0" class="galery-container">
         <div class="item" *ngFor="let img of searchedImages; let i = index">
             <div [hidden]="img.is_loaded" class="img-skeleton">
             </div>
@@ -17,6 +20,6 @@
                 </a>
             </div>
         </div>
-        <div class="img-skeleton" *ngIf="searchedImages"></div>
+        <div class="img-skeleton" *ngIf="!searchedImages"></div>
     </div>
 </div>

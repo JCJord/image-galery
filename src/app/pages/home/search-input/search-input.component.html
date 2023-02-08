@@ -12,23 +12,39 @@
         />
         <div class="search-menu w-100" tabindex="1">
 
-            <div class="" style="padding: 0px 15px;">
-                <h5>
-                    Recent Search
-                </h5>
-                <div class="recent-search-box">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+            <div  style="padding: 10px 15px">
+                <div *ngIf="recentSearches">
+                    <div class="search-titles">
+                        Buscas Recentes
+                    </div>
+                    <div class="menu-box">
+                        <div *ngFor="let recent of recentSearches" class="menu-btn" (click)="searchByTag(recent)">
+                            {{recent}}
+                        </div>
+                    </div>
                 </div>
-    
-                <h5>Trending</h5>
-                <div class="trending-box">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                
+                <div class="search-titles">
+                    Tendências
+                </div>
+                
+                <div class="menu-box">
+                    <div class="menu-btn" (click)="searchByTag('Cachorro')">
+                        <img src="../../../../assets/icons/trending.svg" alt="">
+                        Cachorro
+                    </div>
+                    <div class="menu-btn" (click)="searchByTag('Gato')">
+                        <img src="../../../../assets/icons/trending.svg" alt="">
+                        Gato
+                    </div>
+                    <div class="menu-btn" (click)="searchByTag('Café')">
+                        <img src="../../../../assets/icons/trending.svg" alt="">
+                        Café
+                    </div>
+                    <div class="menu-btn" (click)="searchByTag('Ambiente')">
+                        <img src="../../../../assets/icons/trending.svg" alt="">
+                        Ambiente
+                    </div>
                 </div>
 
             </div>

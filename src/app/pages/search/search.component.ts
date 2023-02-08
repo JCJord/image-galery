@@ -14,8 +14,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   constructor(private galeryService: GaleryService ,private activatedRoute: ActivatedRoute){}
 
   searchQuery!: string;
-  searchedImages!: Image[];
+  searchedImages: Image[] = [];
   $searchSubscription!: Subscription;
+  hasImages: boolean = true;
 
   actualPage = 1;
 
@@ -27,7 +28,12 @@ export class SearchComponent implements OnInit, OnDestroy {
   searchImages(query: string) {
     this.$searchSubscription = this.galeryService.searchImages(query, this.actualPage)
     .subscribe((data)=> {
-      this.searchedImages = data;
+      if(data.length == 0){
+        this.hasImages = false;
+      }else {
+        this.searchedImages = data;
+        this.hasImages = true;
+      }
     });
   }
 
@@ -35,7 +41,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.actualPage++;
     this.galeryService.searchImages(this.searchQuery , this.actualPage).subscribe((data) => {
       data.map((items: Image)=>{
-        this.searchedImages.push(items)
+        this.searchedImages.push(items);
       })
     })
   }
@@ -45,7 +51,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.$searchSubscription ? this.$searchSubscription.unsubscribe() : null;
+    if(this.$searchSubscription){
+      this.$searchSubscription.unsubscribe();
+    }
   }
-
 }
